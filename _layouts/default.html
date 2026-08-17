@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+  <!-- Mobile hamburger toggle -->
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+
+  <div class="site-wrapper">
+
+    <!-- Sidebar navigation -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="{{ '/' | relative_url }}" class="sidebar-logo">Hibernate + JPA</a>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="{{ '/' | relative_url }}" {% if page.permalink == '/' %}class="active"{% endif %}>🏠 Overview</a></li>
+        <li><a href="{{ '/docs/01-jpa-vs-hibernate/' | relative_url }}" {% if page.permalink contains '01' %}class="active"{% endif %}>1. JPA vs Hibernate</a></li>
+        <li><a href="{{ '/docs/02-entity-lifecycle/' | relative_url }}" {% if page.permalink contains '02' %}class="active"{% endif %}>2. Entity Lifecycle</a></li>
+        <li><a href="{{ '/docs/03-persistence-context/' | relative_url }}" {% if page.permalink contains '03' %}class="active"{% endif %}>3. Persistence Context</a></li>
+        <li><a href="{{ '/docs/04-dirty-checking/' | relative_url }}" {% if page.permalink contains '04' %}class="active"{% endif %}>4. Dirty Checking</a></li>
+        <li><a href="{{ '/docs/05-flushing/' | relative_url }}" {% if page.permalink contains '05' %}class="active"{% endif %}>5. Flushing</a></li>
+        <li><a href="{{ '/docs/06-caching/' | relative_url }}" {% if page.permalink contains '06' %}class="active"{% endif %}>6. Caching (L2)</a></li>
+        <li><a href="{{ '/docs/07-query-behavior/' | relative_url }}" {% if page.permalink contains '07' %}class="active"{% endif %}>7. Query Behavior</a></li>
+        <li><a href="{{ '/docs/08-relationships/' | relative_url }}" {% if page.permalink contains '08' %}class="active"{% endif %}>8. Relationships</a></li>
+        <li><a href="{{ '/docs/09-transactions/' | relative_url }}" {% if page.permalink contains '09' %}class="active"{% endif %}>9. Transactions</a></li>
+        <li><a href="{{ '/docs/10-performance/' | relative_url }}" {% if page.permalink contains '10' %}class="active"{% endif %}>10. Performance</a></li>
+        <li><a href="{{ '/docs/11-traces/' | relative_url }}" {% if page.permalink contains '11' %}class="active"{% endif %}>11. Execution Traces</a></li>
+        <li><a href="{{ '/docs/12-comparison-tables/' | relative_url }}" {% if page.permalink contains '12' %}class="active"{% endif %}>12. Comparison Tables</a></li>
+        <li><a href="{{ '/docs/13-interview-questions/' | relative_url }}" {% if page.permalink contains '13' %}class="active"{% endif %}>13. Interview Questions</a></li>
+        <li><a href="{{ '/docs/14-exercises/' | relative_url }}" {% if page.permalink contains '14' %}class="active"{% endif %}>14. Exercises</a></li>
+        <li><a href="{{ '/docs/15-production-pitfalls/' | relative_url }}" {% if page.permalink contains '15' %}class="active"{% endif %}>15. Production Pitfalls</a></li>
+        <li><a href="{{ '/docs/16-revision-sheet/' | relative_url }}" {% if page.permalink contains '16' %}class="active"{% endif %}>16. Revision Sheet</a></li>
+      </ul>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <article class="content">
+        {{ content }}
+      </article>
+    </main>
+
+  </div>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function openSidebar() {
+      sidebar.classList.add('open');
+      overlay.classList.add('visible');
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('visible');
+    }
+
+    toggle.addEventListener('click', function() {
+      sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+    });
+    overlay.addEventListener('click', closeSidebar);
+  </script>
+
+</body>
+</html>

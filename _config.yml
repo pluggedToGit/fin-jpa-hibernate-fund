@@ -1,15 +1,12 @@
 title: "Hibernate + JPA Internals"
 description: "A payment-service field guide for Senior and Staff Java Backend Engineer interviews"
-theme: jekyll-theme-slate
-remote_theme: pages-themes/slate@v0.2.0
 plugins:
-  - jekyll-remote-theme
   - jekyll-seo-tag
 
 # Site configuration
 author: pluggedToGit
-show_downloads: false
-google_analytics: false
+url: "https://pluggedtogit.github.io"
+baseurl: "/fin-jpa-hibernate-fund"
 
 # Markdown settings
 markdown: kramdown
@@ -17,9 +14,6 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-# Mobile & responsive settings
+# Sass
 sass:
   style: compressed
-  
-# Ensure proper mobile viewport
-# This is handled by the remote theme, but explicitly configured for safety
